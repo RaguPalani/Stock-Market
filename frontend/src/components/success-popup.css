@@ -1,0 +1,192 @@
+/* success-popup.css - Custom styling for Success Popup component */
+
+.success-popup-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.success-popup {
+  background: #10b981;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.success-icon {
+  font-size: 1.25rem;
+  animation: successBounce 1s infinite;
+}
+
+.success-message {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Animations */
+@keyframes successBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.popup-enter {
+  opacity: 0;
+  transform: translateY(-100px) scale(0.3);
+}
+
+.popup-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.5s ease-out;
+}
+
+.popup-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.popup-exit-active {
+  opacity: 0;
+  transform: translateY(-100px) scale(0.3);
+  transition: all 0.5s ease-out;
+}
+
+/* Progress Bar */
+.success-popup.with-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  transform-origin: left;
+  animation: progressShrink 3s linear forwards;
+}
+
+@keyframes progressShrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Variants */
+.success-popup.success {
+  background: #10b981;
+}
+
+.success-popup.error {
+  background: #ef4444;
+}
+
+.success-popup.warning {
+  background: #f59e0b;
+}
+
+.success-popup.info {
+  background: #3b82f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .success-popup-container {
+    top: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+  }
+  
+  .success-popup {
+    min-width: auto;
+    max-width: none;
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .success-message {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-popup-container {
+    top: 0.25rem;
+    right: 0.25rem;
+    left: 0.25rem;
+  }
+  
+  .success-popup {
+    padding: 0.75rem 1rem;
+  }
+  
+  .success-icon {
+    font-size: 1rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .success-icon {
+    animation: none;
+  }
+  
+  .popup-enter-active,
+  .popup-exit-active {
+    transition: opacity 0.3s ease;
+  }
+  
+  .progress-bar {
+    animation: none;
+  }
+}
+
+/* Hover effects */
+.success-popup:hover .progress-bar {
+  animation-play-state: paused;
+}
+
+/* Close button for manual dismissal */
+.success-popup.with-close {
+  padding-right: 3rem;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.close-icon {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
